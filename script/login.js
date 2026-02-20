@@ -5,6 +5,6 @@ document.querySelector("#login-btn").addEventListener("click", () => {
   if (numberInput.value == "01234567890" && pinInput.value == "1234") {
     window.location.assign("/home.html");
   } else {
-    alert("Invalid number or pin");
+    daisyModal("⚠️ Error", "Invalid number or pin", "red");
   }
 });

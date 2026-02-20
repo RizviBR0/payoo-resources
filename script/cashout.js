@@ -4,32 +4,32 @@ document.querySelector("#cashout-btn").addEventListener("click", () => {
   const cashoutPinInput = getValueFromInput("cashout-pin");
 
   if (cashoutNumberInput.length !== 11) {
-    alert("Invalid agent number");
+    daisyModal("⚠️ Error", "Invalid agent number", "red");
     return;
   }
 
   if (cashoutAmountInput.length === 0 || isNaN(cashoutAmountInput)) {
-    alert("Invalid amount");
+    daisyModal("⚠️ Error", "Invalid amount", "red");
     return;
   }
 
   if (Number(cashoutAmountInput) <= 0) {
-    alert("Amount must be greater than zero");
+    daisyModal("⚠️ Error", "Amount must be greater than zero", "red");
     return;
   }
 
   const newBalance = getBalance() - Number(cashoutAmountInput);
 
   if (newBalance <= 0) {
-    alert("Invalid amount");
+    daisyModal("⚠️ Error", "Insufficient balance", "red");
     return;
   } else {
     setBalance(newBalance);
   }
 
   if (cashoutPinInput === "1234") {
-    my_modal_1.showModal();
+    daisyModal("🎉 Congratulations!", "Cashout Successful", "green");
   } else {
-    alert("Invalid PIN");
+    daisyModal("⚠️ Error", "Invalid PIN", "red");
   }
 });

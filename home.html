@@ -29,6 +29,20 @@
 </head>
 
 <body class="font-outfit">
+    <!-- this is a global custom modal component from daisyUi -->
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box">
+            <h3 id="modal-title" class="text-lg font-bold">Title</h3>
+            <p id="modal-body" class="py-4">Body</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
     <div class="min-h-screen max-w-md bg-white mx-auto">
         <header class="border-b-2 border-gray-200 sticky top-0 bg-white z-10">
             <section class="w-11/12 flex justify-between items-center py-3">
@@ -53,12 +67,12 @@
             <p class="text-neutral/50 text-sm">Enjoy easy and convenient financial services with us. Cashout charge is
                 low and </p>
 
-            <div class="buttons grid grid-cols-3 gap-3">
-                <button class="btn flex-col h-fit py-3 btn-primary btn-soft">
+            <div id="button-group" class="buttons grid grid-cols-3 gap-3">
+                <button onclick="showOnly('add-money')" class="btn flex-col h-fit py-3 btn-primary btn-soft">
                     <img src="./assets/opt-1.png" alt="">
                     <p>Add Money</p>
                 </button>
-                <button class="btn flex-col h-fit py-3 btn-primary btn-soft">
+                <button onclick="showOnly('cashout')" class="btn flex-col h-fit py-3 btn-primary btn-soft">
                     <img src="./assets/opt-2.png" alt="">
                     <p>Cashout</p>
                 </button>
@@ -104,19 +118,6 @@
                                 placeholder="Enter 4 Digit Pin" />
                             <button id="cashout-btn" class="btn btn-primary mt-4 rounded-full shadow-none">Withdraw
                                 Money</button>
-
-                            <dialog id="my_modal_1" class="modal">
-                                <div class="modal-box">
-                                    <h3 class="text-lg font-bold">🎉 Congratulations!</h3>
-                                    <p class="py-4">Cashout Successful</p>
-                                    <div class="modal-action">
-                                        <form method="dialog">
-                                            <!-- if there is a button in form, it will close the modal -->
-                                            <button class="btn">Close</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </dialog>
                         </fieldset>
                     </div>
                 </div>
@@ -134,7 +135,7 @@
                             <label class="label font-bold text-black">Select to Pay</label>
                             <select id="add-money-bank"
                                 class="select w-full rounded-full bg-base-200 border-none px-4 outline-blue-600">
-                                <option disabled selected>Select Bank</option>
+                                <option value="none" disabled selected>Select Bank</option>
                                 <option value="DBBL">DBBL</option>
                                 <option value="IBBL">IBBL</option>
                                 <option value="CITY">City Bank</option>
@@ -157,19 +158,6 @@
                                 placeholder="Enter 4 Digit Pin" />
                             <button id="add-money-btn" class="btn btn-primary mt-4 rounded-full shadow-none">Add
                             </button>
-
-                            <dialog id="my_modal_1" class="modal">
-                                <div class="modal-box">
-                                    <h3 class="text-lg font-bold">🎉 Congratulations!</h3>
-                                    <p class="py-4">Add Money Successful</p>
-                                    <div class="modal-action">
-                                        <form method="dialog">
-                                            <!-- if there is a button in form, it will close the modal -->
-                                            <button class="btn">Close</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </dialog>
                         </fieldset>
                     </div>
                 </div>
@@ -177,7 +165,9 @@
         </div>
     </div>
 
+    <script src="./script/initialState.js"></script>
     <script src="./script/machine.js"></script>
+    <script src="./script/addMoney.js"></script>
     <script src="./script/cashout.js"></script>
 </body>
 
